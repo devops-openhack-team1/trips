@@ -7,7 +7,7 @@ on:
     - 'apis/trips/go.mod'
     - 'apis/trips/main.go'
     - 'apis/trips/trips'
-    - '.github/workflows/go.yml'
+    - '.github/workflows/trips-ci.yml'
   pull_request:
     branches: [ main ]
     paths: 
