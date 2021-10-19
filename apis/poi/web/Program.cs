@@ -15,6 +15,7 @@ namespace poi
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
+            int  a  = 1; // new code changes to trigger build..
             //used to read env variables for host/port
             var configuration = new ConfigurationBuilder()
             .AddEnvironmentVariables()
