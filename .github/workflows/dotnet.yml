@@ -1,12 +1,12 @@
 name: .NET
 on:
   push:
-    branches: [ main ]
+    branches: [ main , dotnet-pipeline ]
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
-    
+    - '.github/workflows/dotnet.yml'
   pull_request:
     branches: [ main ]
     paths: 
