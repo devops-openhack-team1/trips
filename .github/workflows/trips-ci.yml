@@ -30,7 +30,7 @@ jobs:
         go-version: 1.17
 
     - name: Get Modules
-      run: go get
+      run: go geet
       
     - name: build
       run: go build
