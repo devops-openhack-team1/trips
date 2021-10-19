@@ -19,7 +19,6 @@ jobs:
     defaults:
       run:
        working-directory: 'apis/poi'
-     
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
