@@ -1,12 +1,12 @@
 name: .NET
 on:
   push:
-    branches: [ main ]
+    branches: [ main , dotnet-pipeline ]
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
-    
+    - '.github/workflows/dotnet.yml'
   pull_request:
     branches: [ main ]
     paths: 
@@ -31,4 +31,13 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal 'tests/UnitTests' 
+    - uses: nashmaniac/create-issue-action@v1.1
+      name: Create Issue Action
+      if: ${{ failure() }}
+      with: 
+        title: Build Failed
+        token: ${{secrets.GITHUB_TOKEN}}
+        assignees: ${{github.actor}}
+        labels: worflow-failed
+        body: Workflow failed for commit ${{github.sha}}
