@@ -1,0 +1,12 @@
+# These owners will be the default owners for everything in
+# the repo. Unless a later match takes precedence,
+# @username and @username2 will be requested for
+# review when someone opens a pull request.
+*       @danielkon96 @kevinmgates @nicoleserafino @prakashsha @briandenicola
+
+# In this example, any change inside the `/apps` directory
+# will require approval from @username.
+/apis/poi/ @kevinmgates
+/apis/trips/ @nicoleserafino
+/apis/user-java/ @prakashsha
+/apis/userprofile/ @briandenicola
