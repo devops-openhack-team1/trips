@@ -1,7 +1,7 @@
 name: User Profile Build
 on:
   push:
-    branches: [ main , brdenico/user-profile-pipeline ]
+    branches: '*'
     paths: 
     - 'apis/userprofile/'
     - '.github/workflows/node.yml'
