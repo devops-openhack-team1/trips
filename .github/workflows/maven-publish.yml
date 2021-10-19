@@ -8,10 +8,11 @@ on:
     branches: [ main , java-pipeline ]
     paths: 
     - 'apis/user-java/'
+    - '.github/workflows/maven-publish.yml'
   pull_request:
     branches: [ main ]
     paths: 
-    - 'apis/user-java/pom.xml'
+    - 'apis/user-java/'
 
 jobs:
   build:
