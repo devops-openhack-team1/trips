@@ -31,7 +31,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal 'tests/UnitTests' 
     - uses: nashmaniac/create-issue-action@v1.1
       name: Create Issue Action
       if: ${{ failure() }}
