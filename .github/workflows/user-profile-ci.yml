@@ -1,16 +1,16 @@
-name: User Profile Build
+name: User Profile CI
 on:
   push:
     branches: '*'
     paths: 
     - 'apis/userprofile/'
-    - '.github/workflows/node.yml'
+    - '.github/workflows/user-profile-ci.yml'
 
   pull_request:
     branches: [ main ]
     paths: 
     - 'apis/userprofile/'
-    - '.github/workflows/node.yml'
+    - '.github/workflows/user-profile-ci.yml'
 
 jobs:
   build:
