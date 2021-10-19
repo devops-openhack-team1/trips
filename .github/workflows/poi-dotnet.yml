@@ -1,4 +1,4 @@
-name: .NET
+name: Points of Interests CI
 on:
   push:
     branches: '*'
