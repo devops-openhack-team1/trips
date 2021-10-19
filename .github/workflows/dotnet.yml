@@ -1,7 +1,7 @@
 name: .NET
 on:
   push:
-    branches: [ main , dotnet-pipeline ]
+    branches: '*'
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
