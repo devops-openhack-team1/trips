@@ -12,12 +12,11 @@ on:
     - 'apis/userprofile/'
     - '.github/workflows/node.yml'
 
-env:
-  NODE_VERSION: '10.x'
-
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: '10.x'
     defaults:
       run:
        working-directory: 'apis/userprofile'
