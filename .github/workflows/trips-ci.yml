@@ -1,7 +1,7 @@
-name: Go
+name: Trips CI
 on:
   push:
-    branches: [ main, go-pipeline ]
+    branches: '*'
     paths: 
     - 'apis/trips/go.mod'
     - 'apis/trips/main.go'
