@@ -1,16 +1,19 @@
-on: 
-    push:
+name: Build POI Container
+
+on:
+  push:
     branches: [ main ]
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
-    - 'apis/poi/**.sln'	
+    - 'apis/poi/**.sln'
+
 name: Linux_Container_POI_Workflow
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    # checkout the repo
+
     - name: 'Checkout Github Action'
       uses: actions/checkout@master
 
