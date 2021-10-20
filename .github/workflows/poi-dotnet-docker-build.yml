@@ -13,13 +13,14 @@ on:
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
     - '.github/workflows/dotnet.yml'
+    - '.github/workflows/poi-dotnet-docker-build.yml'
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
-       working-directory: 'apis/poi'
+       working-directory: 'apis/poi/web'
        
     steps:
 
