@@ -35,10 +35,10 @@ jobs:
     - name: Build and push
       run: |
         az acr login -n openhackh9786t04acr
-        docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
-        docker push openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
+        docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}
+        docker push openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }} 
 
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'openhackh9786t04poi'
-        images: 'openhackh9786t04acr.azurecr.i/devopsoh/api-poi:${{ github.sha }}'
+        images: 'openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}'
