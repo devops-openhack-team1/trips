@@ -47,6 +47,9 @@ jobs:
         
     # needs: build-and-deploy
     # Swap
+    - name: Swap to production slot
+      run: |
+        az webapp deployment slot swap --resource-group "openhackh9786t04rg" --name "openhackh9786t04poi" --slot staging --target-slot production
     
     # Test prod to make sure it works
     
