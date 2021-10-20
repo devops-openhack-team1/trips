@@ -32,8 +32,18 @@ jobs:
         az acr login -n openhackh9786t04acr
         docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}
         docker push openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }} 
-
+    
+    # Always deploy to staging
+    
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'openhackh9786t04poi'
+        app-name: 'openhackh9786t04poi-staging'
         images: 'openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}'
+        
+    # Test staging to see if it works
+    # needs: build-and-deploy
+    # Swap
+    
+    # Test prod to make sure it works
+    
+    # Optional: rollback if prod has issues
