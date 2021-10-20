@@ -7,9 +7,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-       working-directory: 'apis/poi/web'
        
     steps:
     - name: 'Checkout Github Action'
