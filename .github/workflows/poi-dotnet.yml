@@ -1,7 +1,7 @@
-name: .NET
+name: Points of Interests CI
 on:
   push:
-    branches: [ main , dotnet-pipeline ]
+    branches: '*'
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
@@ -19,7 +19,6 @@ jobs:
     defaults:
       run:
        working-directory: 'apis/poi'
-     
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -40,4 +39,4 @@ jobs:
         token: ${{secrets.GITHUB_TOKEN}}
         assignees: ${{github.actor}}
         labels: worflow-failed
-        body: Workflow failed for commit ${{github.sha}}
+        body: "Build Failure \n Build Number: ${{ github.run_number }} \n Build Log: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} \n SHA: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
