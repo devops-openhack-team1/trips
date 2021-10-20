@@ -18,12 +18,10 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURECREDENTIALS }}
-
-       
     - run: |
-	az acr login -n openhackh9786t04acr
-        docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
-        docker push openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
+        az acr login -n openhackh9786t04acr
+	docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }}
+	docker push openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.sha }} 
 
     - uses: azure/webapps-deploy@v2
       with:
