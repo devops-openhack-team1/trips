@@ -44,6 +44,8 @@ jobs:
     # Test staging to see if it works
     - name: Test Staging
       run: |
+        echo "show directory"
+        ls
         bash ~/$GITHUB_REPOSITORY/polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
         
     # needs: build-and-deploy
