@@ -7,16 +7,20 @@ on:
         description: 'Create and Deploy POI to Azure'
 
   push:
-    branches: [ main ]
+    branches: '*'
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
+    - '.github/workflows/dotnet.yml'
 
-name: Linux_Container_POI_Workflow
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+       working-directory: 'apis/poi'
+       
     steps:
 
     - name: 'Checkout Github Action'
