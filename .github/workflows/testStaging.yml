@@ -1,0 +1,22 @@
+name: Test Staging
+
+on:
+  push:
+    branches: '*'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+       working-directory: 'apis/poi/web'
+       
+    steps:
+    - name: 'Checkout Github Action'
+      uses: actions/checkout@master
+      
+    - name: Test Staging
+      run: |
+        echo "show directory"
+        ls
+        bash ~/$GITHUB_REPOSITORY/polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
