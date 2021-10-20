@@ -13,9 +13,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-       working-directory: 'apis/poi/web'
+       
        
     steps:
 
@@ -28,6 +26,7 @@ jobs:
         creds: ${{ secrets.AZURECREDENTIALS }}
         
     - name: Build and push
+      working-directory: 'apis/poi/web'
       run: |
         az acr login -n openhackh9786t04acr
         docker build . -t openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}
@@ -42,9 +41,9 @@ jobs:
         slot-name: 'staging'
         
     # Test staging to see if it works
-    #- name: Test Staging
-      #run: |
-        #bash ~/$GITHUB_REPOSITORY/polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
+    - name: Test Staging
+      run: |
+        bash ./polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
         
     # needs: build-and-deploy
     # Swap
