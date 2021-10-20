@@ -18,4 +18,4 @@ jobs:
         pwd
         echo "show directory"
         ls
-        bash ~/$GITHUB_REPOSITORY/trips/polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
+        bash ./polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
