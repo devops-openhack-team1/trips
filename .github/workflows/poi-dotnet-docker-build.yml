@@ -42,6 +42,10 @@ jobs:
         slot-name: 'staging'
         
     # Test staging to see if it works
+    - name: Test Staging
+      run: |
+        bash ./polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
+        
     # needs: build-and-deploy
     # Swap
     
