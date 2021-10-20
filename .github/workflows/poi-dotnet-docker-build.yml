@@ -2,7 +2,7 @@ name: Build POI Container
 
 on:
   push:
-    branches: [ main ]
+    branches: '*'
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
@@ -37,8 +37,9 @@ jobs:
     
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'openhackh9786t04poi-staging'
+        app-name: 'openhackh9786t04poi'
         images: 'openhackh9786t04acr.azurecr.io/devopsoh/api-poi:${{ github.run_number }}'
+        slot-name: 'staging'
         
     # Test staging to see if it works
     # needs: build-and-deploy
