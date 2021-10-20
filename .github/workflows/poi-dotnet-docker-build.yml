@@ -1,13 +1,8 @@
 name: Build POI Container
 
 on:
-  workflow_dispatch:
-    inputs:
-      tags:
-        description: 'Create and Deploy POI to Azure'
-
   push:
-    branches: '*'
+    branches: [ main ]
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
