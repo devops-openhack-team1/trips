@@ -12,6 +12,7 @@ on:
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
+    - '.github/workflows/dotnet.yml'
 
 jobs:
   build-and-deploy:

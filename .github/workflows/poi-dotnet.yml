@@ -7,12 +7,15 @@ on:
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
     - '.github/workflows/dotnet.yml'
+    - '.github/workflows/poi-dotnet-docker-build.yml'
+
   pull_request:
     branches: [ main ]
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
     - 'apis/poi/**.sln'
+    
 jobs:
   build:
     runs-on: ubuntu-latest
