@@ -7,7 +7,7 @@ on:
         description: 'Create and Deploy POI to Azure'
 
   push:
-    branches: [ * ]
+    branches: '*'
     paths: 
     - 'apis/poi/**.csproj'
     - 'apis/poi/**.cs'
