@@ -51,6 +51,11 @@ jobs:
     needs: build
     steps:
     
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURECREDENTIALS }}
+        
     - name: Configure traffic
       run: |
         az webapp traffic-routing set --distribution staging=10 --name openhackh9786t04poi --resource-group openhackh9786t04rg      
@@ -61,6 +66,12 @@ jobs:
     needs: deploy
     steps:
     
+    
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURECREDENTIALS }}
+        
     # Swap
     - name: Swap to production slot
       run: |
