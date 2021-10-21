@@ -50,7 +50,9 @@ jobs:
     environment: canary
     needs: build
     steps:
-    
+    - name: 'Checkout Github Action'
+      uses: actions/checkout@master
+      
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
