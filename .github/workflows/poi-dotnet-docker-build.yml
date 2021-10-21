@@ -11,10 +11,9 @@ on:
     - '.github/workflows/poi-dotnet-docker-build.yml'
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     environment: production
-       
        
     steps:
 
@@ -45,12 +44,39 @@ jobs:
     - name: Test Staging
       run: |
         bash ./polling.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poi
+  
+  deploy:
+    runs-on: ubuntu-latest
+    environment: canary
+    needs: build
+    steps:
+    
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURECREDENTIALS }}
         
-    # needs: build-and-deploy
+    - name: Configure traffic
+      run: |
+        az webapp traffic-routing set --distribution staging=10 --name openhackh9786t04poi --resource-group openhackh9786t04rg      
+
+  swap:
+    runs-on: ubuntu-latest
+    environment: release
+    needs: deploy
+    steps:
+    
+    
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURECREDENTIALS }}
+        
     # Swap
     - name: Swap to production slot
       run: |
         az webapp deployment slot swap --resource-group "openhackh9786t04rg" --name "openhackh9786t04poi" --slot staging --target-slot production
+        
     
     # Test prod to make sure it works
     
