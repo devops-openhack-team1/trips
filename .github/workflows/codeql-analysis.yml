@@ -12,6 +12,10 @@
 name: "CodeQL"
 
 on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manual Scan'
   push:
     branches: [ main ]
   pull_request:
