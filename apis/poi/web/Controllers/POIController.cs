@@ -60,5 +60,32 @@ namespace poi.Controllers
             return Ok(poi);
 
         }
+        
+        [HttpPost]
+        [Produces("application/json", Type = typeof(string))]
+
+        public IActionResult Post()
+
+        {
+
+            var connectionString = GetConnectionString();
+
+            var cn = new System.Data.SqlClient.SqlConnection(connectionString);
+
+            var customerId = GetCustomerId();
+
+            var sql = "SELECT CompanyName from customers where CustomerID = '" + customerId + "'";
+
+            var cmd = new System.Data.SqlClient.SqlCommand(sql, cn);
+
+            var name = cmd.ExecuteScalar();
+
+            return Ok(name);
+
+        }
+
+        private string GetConnectionString() { return "Server=(local);UserId=sa;Password=PA$$W0rd;Database=notfakedb"; }
+        private string GetCustomerId() { return Request.Form["customerId"];
+        }
     }
 }
