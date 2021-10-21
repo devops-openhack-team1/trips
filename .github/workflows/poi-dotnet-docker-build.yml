@@ -14,6 +14,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     environment: production
+    strategy:
+      matrix:
+        traffic: [10, 20, 50]
        
        
     steps:
@@ -51,6 +54,11 @@ jobs:
     - name: Swap to production slot
       run: |
         az webapp deployment slot swap --resource-group "openhackh9786t04rg" --name "openhackh9786t04poi" --slot staging --target-slot production
+        
+    - name: Configure traffic
+      run: |
+        az webapp traffic-routing set --distribution staging=${{ matrix.traffic }} --name openhackh9786t04poi --resource-group openhackh9786t04rg
+      
     
     # Test prod to make sure it works
     
