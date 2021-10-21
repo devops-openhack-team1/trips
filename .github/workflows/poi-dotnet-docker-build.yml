@@ -48,6 +48,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: canary
+    needs: build
     steps:
     
     - name: Configure traffic
@@ -57,6 +58,7 @@ jobs:
   swap:
     runs-on: ubuntu-latest
     environment: release
+    needs: deploy
     steps:
     
     # Swap
