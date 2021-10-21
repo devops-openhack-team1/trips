@@ -24,6 +24,7 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+    # defaults: 
     permissions:
       actions: read
       contents: read
@@ -40,6 +41,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      
+    - name: Remove directories
+      run: |
+        rm -dr MobileApps
+        rm -dr OBDLibrary
 
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
