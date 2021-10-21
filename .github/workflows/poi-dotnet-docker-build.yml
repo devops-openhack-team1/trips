@@ -59,6 +59,15 @@ jobs:
     - name: Configure traffic
       run: |
         az webapp traffic-routing set --distribution staging=10 --name openhackh9786t04poi --resource-group openhackh9786t04rg      
+    - name: Test Production
+      run: |
+        bash ./polling2.sh https://openhackh9786t04poi-staging.azurewebsites.net/api/healthcheck/poiXXXXX
+        
+    - name: Reset Traffic back to 100% prod
+      if: failure()
+      run: |
+        az webapp traffic-routing set --distribution staging=0 --name openhackh9786t04poi --resource-group openhackh9786t04rg  
+
 
   swap:
     runs-on: ubuntu-latest
